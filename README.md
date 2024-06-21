@@ -76,52 +76,48 @@ A comprehensive Library Management System built using Flask, a lightweight WSGI 
 
 Library-Management-System-Flask/  
 │  
-├── instance/
-│ ├── database.sqlite3
-│
-├── library_app/
-│ ├── init.py
-│ ├── config.py
-│ ├── forms.py
-│ ├── models.py
-│ ├── utils.py
-│ ├── errors/
-│ │ ├── init.py
-│ │ ├── handlers.py
-│ │ ├── utils.py
-│ ├── librarian/
-│ │ ├── init.py
-│ │ ├── forms.py
-│ │ ├── routes.py
-│ │ ├── utils.py
-│ ├── main/
-│ │ ├── init.py
-│ │ ├── forms.py
-│ │ ├── routes.py
-│ │ ├── utils.py
-│ ├── user/
-│ │ ├── init.py
-│ │ ├── forms.py
-│ │ ├── routes.py
-│ │ ├── utils.py
-│ ├── static/
-│ │ ├── book/
-│ │ ├── librarian/
-│ │ ├── main/
-│ │ ├── user/
-│ ├── templates/
-│ │ ├── errors/
-│ │ ├── librarian/
-│ │ ├── main/
-│ │ ├── user/
-│
-├── migrations/
-│
-├── .env
-├── .gitignore
-├── requirements.txt
-├── run.py
-├── README.md
+├── instance/  
+│ ├── database.sqlite3  
+│  
+├── library_app/  
+│ ├── init.py  
+│ ├── config.py  
+│ ├── forms.py  
+│ ├── models.py  
+│ ├── utils.py  
+│ ├── errors/  
+│ │ ├── init.py  
+│ │ ├── handlers.py  
+│ │ ├── utils.py  
+│ ├── librarian/  
+│ │ ├── init.py  
+│ │ ├── forms.py  
+│ │ ├── routes.py  
+│ │ ├── utils.py  
+│ ├── main/  
+│ │ ├── init.py  
+│ │ ├── forms.py  
+│ │ ├── routes.py  
+│ │ ├── utils.py  
+│ ├── user/  
+│ │ ├── init.py  
+│ │ ├── forms.py  
+│ │ ├── routes.py  
+│ │ ├── utils.py  
+│ ├── static/  
+│ │ ├── book/  
+│ │ ├── librarian/  
+│ │ ├── main/  
+│ │ ├── user/  
+│ ├── templates/  
+│ │ ├── errors/  
+│ │ ├── librarian/  
+│ │ ├── main/  
+│ │ ├── user/  
+│  
+├── requirements.txt  
+├── run.py  
+├── README.md  
 
 ## Usage
 
