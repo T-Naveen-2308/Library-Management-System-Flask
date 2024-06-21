@@ -32,21 +32,13 @@ A comprehensive Library Management System built using Flask, a lightweight WSGI 
     git clone https://github.com/T-Naveen-2308/Library-Management-System-Flask.git
     cd Library-Management-System-Flask
     ```
-
-2. **Create and activate a virtual environment:**
-
-    ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-
-3. **Install the dependencies:**
+2. **Install the dependencies:**
 
     ```sh
     pip install -r requirements.txt
     ```
 
-4. **Set up the environment variables:**
+3. **Set up the environment variables:**
 
     Create a `.env` file in the root directory and add the following:
 
@@ -62,13 +54,13 @@ A comprehensive Library Management System built using Flask, a lightweight WSGI 
     MAIL_USERNAME=your_username
     MAIL_PASSWORD=your_password
 
-5. **Run the application:**
+4. **Run the application:**
 
     ```sh
     python run.py
     ```
 
-6. **Access the application:**
+5. **Access the application:**
 
     Open your web browser and go to `http://127.0.0.1:5000`
 
