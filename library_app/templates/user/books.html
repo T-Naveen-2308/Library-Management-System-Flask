@@ -1,0 +1,122 @@
+{% extends "user/layout.html" %} {% block content %}
+<div class="content-section container px-4">
+{% for section, sorted_books in sorted_sections %} {% if sorted_books|length>4
+%}
+<div class="container mt-3">
+    <a href="{{url_for("user.section_books", sectionid=section.sectionid)}}" style="text-decoration:none;"><h2 class="mr-5 mt-3">{{ section.title }}</h2></a>
+    <div class="container-fluid mt-4">
+        <div class="row flex-row flex-nowrap">
+            {% for book in sorted_books %}
+            <div class="container">
+                <div class="card special-card mx-1" style="width: 16rem">
+                    <a href="{{ url_for('user.book_info', bookid=book.bookid) }}" class="text-decoration-none text-muted">
+                    <img
+                        class="card-img-top mx-auto"
+                        src="{{ url_for('static', filename='book/pictures/' + book.picture) }}"
+                        alt="Card image cap"
+                        style="width: 100%; height: 24vh"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <h6 class="card-title">{{ book.author }}</h6>
+                        <p class="card-text text-wrap">{{ book.description }}</p>
+                    </div>
+                    </a>
+                    {% if book.bookid in issuedbookids %}
+                        {% if book.bookid in feedbackbookids %}
+                        <div class="container text-center mb-2">
+                            <a href="{{url_for("user.edit_feedback", feedbackid=feedbackbookids[book.bookid])}}" class="btn btn-dark"><i class="bi bi-pencil-square mr-1"></i>Edit Feedback</a>
+                        </div>
+                        {% else %}
+                        <div class="container text-center mb-2">
+                            <a href="{{url_for("user.book_feedback", bookid=book.bookid)}}" class="btn btn-primary"><i class="bi bi-chat-left mr-1"></i>Feedback</a>
+                        </div>
+                        {% endif %}
+                        <div class="container mb-3">
+                            <div class="row mx-auto">
+                                <div class="mr-4">
+                                    <a href="{{url_for("user.return_book", issueid=issuedbookids[book.bookid])}}" class="btn btn-danger"><i class="bi bi-arrow-bar-up mr-1"></i>Return</a>
+                                </div>
+                                <div class="ml-2">
+                                    <a href="{{ url_for('user.view_book', bookid=book.bookid) }}" class="btn btn-success"><i class="bi bi-eye mr-1"></i>View</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                    <div class="container mt-1 mb-3 text-center">
+                        <a
+                            href="{{ url_for('user.book_request', bookid=book.bookid) }}"
+                            class="btn btn-success"
+                            ><i class="bi bi-send mr-1"></i>Request</a
+                        >
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% elif sorted_books|length!=0 %}
+<div class="container mt-3">
+    <a href="{{url_for("user.section_books", sectionid=section.sectionid)}}" style="text-decoration:none;"><h2 class="mr-5 mt-3">{{ section.title }}</h2></a>
+    <div class="row mt-4">
+        {% for book in sorted_books %}
+        <div class="col-md-3">
+            <div class="card special-card mx-1">
+                <a href="{{ url_for('user.book_info', bookid=book.bookid) }}" class="text-decoration-none text-muted">
+                <img
+                    class="card-img-top mx-auto"
+                    src="{{ url_for('static', filename='book/pictures/' + book.picture) }}"
+                    alt="Card image cap"
+                    style="width: 100%; height: 24vh"
+                />
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <h6 class="card-title">{{ book.author }}</h6>
+                    <p class="card-text text-wrap">{{ book.description }}</p>
+                </div>
+                </a>
+                {% if book.bookid in issuedbookids %}
+                    {% if book.bookid in feedbackbookids %}
+                    <div class="container text-center mb-2">
+                        <a href="{{url_for("user.edit_feedback", feedbackid=feedbackbookids[book.bookid])}}" class="btn btn-dark"><i class="bi bi-pencil-square mr-1"></i>Edit Feedback</a>
+                    </div>
+                    {% else %}
+                    <div class="container text-center mb-2">
+                        <a href="{{url_for("user.book_feedback", bookid=book.bookid)}}" class="btn btn-primary"><i class="bi bi-chat-left mr-1"></i>Feedback</a>
+                    </div>
+                    {% endif %}
+                    <div class="container mb-3">
+                        <div class="row mx-auto">
+                            <div class="mr-4">
+                                <a href="{{url_for("user.return_book", issueid=issuedbookids[book.bookid])}}" class="btn btn-danger"><i class="bi bi-arrow-bar-up mr-1"></i>Return</a>
+                            </div>
+                            <div class="ml-2">
+                                <a href="{{ url_for('user.view_book', bookid=book.bookid) }}" class="btn btn-success"><i class="bi bi-eye mr-1"></i>View</a>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                <div class="container mt-1 mb-3 text-center">
+                    <a
+                        href="{{ url_for('user.book_request', bookid=book.bookid) }}"
+                        class="btn btn-success"
+                        ><i class="bi bi-send mr-1"></i>Request</a
+                    >
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<div class="container mt-4">
+    <a href="{{url_for("user.section_books", sectionid=section.sectionid)}}" style="text-decoration:none;"><h2 class="mr-5 mt-3">{{ section.title }}</h2></a>
+    <h4 class="mr-5 mt-3">There are no Books in this Section</h2>
+</div>
+{% endif %} {% endfor %}
+<div class="mb-3"></div>
+</div>
+{% endblock content %}

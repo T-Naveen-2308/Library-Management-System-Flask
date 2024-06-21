@@ -1,0 +1,111 @@
+{% extends "librarian/layout.html" %} {% block content %}
+<div class="content-section mx-auto w-50">
+    <form
+        method="POST"
+        action=""
+        class="form mx-auto w-75 mb-3 mt-3"
+        enctype="multipart/form-data"
+    >
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 h2 font-weight-normal">
+                Edit Profile
+            </legend>
+            <div class="form-group">
+                {{ form.name.label(class='h5 font-weight-normal
+                form-control-label mt-3') }} {%if form.name.errors %} {{
+                form.name(class="form-control form-control-lg is-invalid mt-1")
+                }}
+                <div>
+                    {% for error in form.name.errors %}
+                    <p class="text-danger mt-1">*{{error}}</p>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.name(class="form-control form-control-lg
+                mt-1") }} {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.username.label(class='h5 font-weight-normal
+                form-control-label mt-2') }} {% if form.username.errors %} {{
+                form.username(class="form-control form-control-lg is-invalid
+                mt-1") }}
+                <div>
+                    {% for error in form.username.errors %}
+                    <p class="text-danger mt-1">*{{error}}</p>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.username(class="form-control form-control-lg
+                mt-1") }} {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.email.label(class='h5 font-weight-normal
+                form-control-label mt-2') }} {% if form.email.errors %} {{
+                form.email(class="form-control form-control-lg is-invalid mt-1")
+                }}
+                <div>
+                    {% for error in form.email.errors %}
+                    <p class="text-danger mt-1">*{{error}}</p>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.email(class="form-control form-control-lg
+                mt-1") }} {% endif %}
+            </div>
+            {% if librarian.profile_picture!="default_profile_picture.png" %}
+            <div>
+                {{ form.delete_profile_picture.label(class="h5 font-weight-normal
+                form-control-label mt-2") }}
+                <div>
+                    {% for option in form.delete_profile_picture %}
+                        <div class="form-check form-check-inline">
+                            {{ option(class="form-check-input mb-2", id=option.id) }}
+                            <label class="font-weight-normal form-control-label mt-2" for="{{ option.id }}" style="font-size: 1.10rem;">
+                                {{ option.label }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            <div class="form-group">
+                {{ form.profile_picture.label(class='h5 font-weight-normal
+                form-control-label mt-2') }} {{
+                form.profile_picture(class="form-control-file mt-1") }} {% if
+                form.profile_picture.errors %}
+                <div>
+                    {% for error in form.profile_picture.errors %}
+                    <p class="text-danger mt-1">*{{error}}</p>
+                    {% endfor %}
+                </div>
+                {% else %}{% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class='h5 font-weight-normal
+                form-control-label mt-2') }} {% if form.password.errors %} {{
+                form.password(class="form-control password form-control-lg is-invalid
+                mt-1") }}
+                <div>
+                    {% for error in form.password.errors %}
+                    <p class="text-danger mt-1">*{{error}}</p>
+                    {% endfor %}
+                </div>
+
+                {% else %} {{ form.password(class="form-control password form-control-lg
+                mt-1") }} {% endif %}
+            </div>
+            <div>
+                <input type="checkbox" id="showPass" onchange="showPassword()">
+                <label for="showPass">Show</label>
+            </div>
+            <p class="text-muted mt-2" style="font-size: 1.15rem;"><a href="{{url_for('librarian.reset_request', token=1)}}">Forgot Password?</a></p>
+        </fieldset>
+        <div class="row">
+            <div class="col-md-6">
+                <a class="btn btn-lg btn-danger" href="{{url_for("librarian.account")}}"><i class="bi bi-x-circle mr-1"></i>Cancel</a>
+            </div>
+            <div class="col-md-6 text-right">
+                <button class="btn btn-lg btn-success" id="submit" name="submit" type="submit" value="Edit"><i class="bi bi-pencil-square mr-1"></i>Edit</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

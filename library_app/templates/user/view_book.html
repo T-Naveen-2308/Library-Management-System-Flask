@@ -1,0 +1,44 @@
+{% extends "user/layout.html" %}
+{% block content %}
+<div class="container content-section">
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-5 mt-3 h1 font-weight-normal text-center">
+            {{ book.title }}
+        </legend>
+        <div id="pdf-viewer" style="text-align: center;"></div>
+    </fieldset>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.js"></script>
+<script>
+    const pdfPath = "{{ pdf_file }}";
+    const viewerContainer = document.getElementById('pdf-viewer');
+    const loadingTask = pdfjsLib.getDocument(pdfPath);
+    loadingTask.promise.then(pdf => {
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+            pdf.getPage(pageNum).then(page => {
+                const container = document.createElement('div');
+                container.className = 'pdf-page';
+                container.style.display = 'inline-block';
+                container.style.margin = '0 auto';
+                container.style.marginBottom = '10px';
+                container.style.border = '1px solid #ccc';
+                viewerContainer.appendChild(container);
+
+                const canvas = document.createElement('canvas');
+                container.appendChild(canvas);
+
+                const context = canvas.getContext('2d');
+                const viewport = page.getViewport({ scale: 1.5 });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        }
+    });
+</script>
+{% endblock content %}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='main/style.css') }}"
+        />
+        <link rel="shortcut icon" href="{{ url_for('static', filename='main/favicon.ico') }}">
+        {% if title %}
+        <title>User - {{ title }}</title>
+        {% else %}
+        <title>User - eLibrary</title>
+        {% endif %}
+    </head>
+    <body>
+        <header class="site-header">
+            <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+                <div class="container">
+                    <a class="mr-4" href="{{url_for("user.sections")}}"><img class="logo-img" src="{{url_for('static', filename="main/library_logo.jpg")}}"/></a>
+                    <div class="container">
+                        <form id="searchForm" class="form-inline mx-auto search-form" action="{{ url_for('user.search') }}" method="POST" style="width: 37vw; height: 5.4vh;">
+                            <div class="input-group">
+                                <input id="searchInput" name="search_term" class="form-control form-control-lg border-right-0" type="search" placeholder="Search..." aria-label="Search" style="height: 5.4vh;" minlength="1" maxlength="60">
+                                <div class="input-group-append">
+                                    <button class="btn btn-lg btn-outline-success border-left-0" type="submit" style="height: 5.4vh;">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link h5 font-weight-normal mt-2 {% if 'Sections' in navbaractive %} active {% endif %}" href="{{url_for("user.sections")}}">Sections</a>
+                        <a class="nav-item nav-link h5 font-weight-normal mt-2 {% if 'Books' in navbaractive %} active {% endif %}" href="{{url_for("user.books")}}">Books</a>
+                        <a class="nav-item nav-link h5 font-weight-normal mt-2 {% if 'MyBooks' in navbaractive %} active {% endif %}" href="{{url_for("user.mybooks")}}">MyBooks</a>
+                        <a class="nav-item nav-link h5 font-weight-normal mt-2 {% if 'Stats' in navbaractive %} active {% endif %}" href="{{url_for("user.stats")}}">Stats</a>
+                        <a class="nav-item nav-link {% if 'Account' in navbaractive %} btn btn-primary rounded-pill mx-1{% endif %}" href="{{url_for("user.account")}}"><img src="{{url_for('static', filename='user/profile_pictures/' + user.profile_picture)}}" class="rounded-circle nav-img"/></a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        {% with messages = get_flashed_messages(with_categories = true) %}
+            {% if messages %}
+                <div class="container mx-auto w-50" style="margin-top: 11vh">
+                    {% for category, message in messages%}
+                        <div class="alert alert-{{category}}">{{message}}</div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="container mx-auto w-50" style="margin-top: 14vh"> </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %} {% endblock %}
+        <script src="{{url_for('static', filename='main/script.js')}}" ></script>
+        <p class="mb-5"></p>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "librarian/layout.html" %} 
+{% block content %}
+<div class="content-section container">
+    <div class="row justify-content-center mt-4 mb-5">
+        <div class="col-md-6 text-center">
+            <h2 class="text-center mb-4">Books Issued</h2>
+            <img src="{{ url_for('static', filename='user/stats/' + librarian.username + '_bar_chart.png') }}" class="img-fluid ml-4 mt-4" style="height: 50vh;">
+        </div>
+        <div class="col-md-6 text-center">
+            <h2 class="text-center mb-4">Section Distribution</h2>
+            <img src="{{ url_for('static', filename='user/stats/' + librarian.username + '_pie_chart.png') }}" class="img-fluid" style="height: 50vh;width:28w">
+        </div>
+    </div>
+</div>
+{% endblock content %}

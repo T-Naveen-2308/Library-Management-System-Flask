@@ -1,0 +1,208 @@
+{% extends "main/layout.html" %}
+{% block content %}
+    <div class="content-section container px-4 pb-5">
+        {% if sections|length>0 or books|length>0 or authors|length>0 %}
+            {% if sections|length > 0 %}
+                {% if sections|length > 3 %}
+                    <div class="container mt-3">
+                        <h2>Section Matches</h2>
+                        <div class="container-fluid mt-4" style="overflow-x: auto;">
+                            <div class="row flex-row flex-nowrap">
+                                {% for section in sections %}
+                                    <div class="container">
+                                        <div class="card special-card mx-1" style="width: 22rem;">
+                                            <a href="{{ url_for("main.section_books", sectionid=section.sectionid) }}">
+                                                <img class="card-img-top mx-auto"
+                                                    src="{{ url_for('static', filename='section/' + section.picture) }}"
+                                                    alt="Card image cap"
+                                                    style="width: 100%; height: 30vh;"
+                                                />
+                                            </a>
+                                            <div class="card-body">
+                                                <a href="{{ url_for("main.section_books", sectionid=section.sectionid) }}"
+                                                    class="text-decoration-none">
+                                                    <h5 class="card-title">{{ section.title }}</h5>
+                                                </a>
+                                                <a href="{{ url_for('main.section_books', sectionid=section.sectionid) }}"
+                                                    class="text-decoration-none text-muted">
+                                                    <p class="card-text text-wrap">{{ section.description }}</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="container mt-4">
+                        <h2>Section Matches</h2>
+                        <div class="row mt-3">
+                            {% for section in sections %}
+                                <div class="col-md-4">
+                                    <div class="card special-card mx-1">
+                                        <a href="{{ url_for("main.section_books", sectionid=section.sectionid) }}">
+                                            <img class="card-img-top mx-auto"
+                                                src="{{ url_for('static', filename='section/' + section.picture) }}"
+                                                alt="Card image cap"
+                                                style="width: 100%; height: 30vh;"
+                                            />
+                                        </a>
+                                        <div class="card-body">
+                                            <a href="{{ url_for("main.section_books", sectionid=section.sectionid) }}"
+                                                class="text-decoration-none">
+                                                <h5 class="card-title">{{ section.title }}</h5>
+                                            </a>
+                                            <a href="{{ url_for('main.section_books', sectionid=section.sectionid) }}"
+                                                class="text-decoration-none text-muted">
+                                                <p class="card-text text-wrap">{{ section.description }}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if books|length>0  %}
+                {% if books|length>4 %}
+                    <div class="container mt-4">
+                        <h2>Book Matches</h2>
+                        <div class="container-fluid mt-3">
+                            <div class="row flex-row flex-nowrap">
+                                {% for book in books %}
+                                    <div class="container">
+                                        <div class="card special-card mx-1" style="width: 16rem">
+                                            <a href="{{ url_for('main.book_info', bookid=book.bookid) }}" class="text-decoration-none text-muted">
+                                            <img
+                                                class="card-img-top mx-auto"
+                                                src="{{ url_for('static', filename='book/pictures/' + book.picture) }}"
+                                                alt="Card image cap"
+                                                style="width: 100%; height: 24vh"
+                                            />
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ book.title }}</h5>
+                                                <h6 class="card-title">{{ book.author }}</h6>
+                                                <p class="card-text text-wrap">{{ book.description }}</p>
+                                            </div></a>
+                                            <div class="container mt-1 mb-3 text-center">
+                                                <a
+                                                    href="{{ url_for('user.book_request', bookid=book.bookid) }}"
+                                                    class="btn btn-success"
+                                                    ><i class="bi bi-send mr-1"></i>Request</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="container mt-4">
+                        <h2>Book Matches</h2>
+                        <div class="row mt-3">
+                            {% for book in books %}
+                                <div class="col-md-3">
+                                    <div class="card special-card mx-1">
+                                        <a href="{{ url_for('main.book_info', bookid=book.bookid) }}" class="text-decoration-none text-muted">
+                                        <img
+                                            class="card-img-top mx-auto"
+                                            src="{{ url_for('static', filename='book/pictures/' + book.picture) }}"
+                                            alt="Card image cap"
+                                            style="width: 100%; height: 24vh"
+                                        />
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ book.title }}</h5>
+                                            <h6 class="card-title">{{ book.author }}</h6>
+                                            <p class="card-text text-wrap">{{ book.description }}</p>
+                                        </div></a>
+                                        <div class="container mt-1 mb-3 text-center">
+                                            <a
+                                                href="{{ url_for('user.book_request', bookid=book.bookid) }}"
+                                                class="btn btn-success"
+                                                ><i class="bi bi-send mr-1"></i>Request</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if authors|length>0  %}
+                {% if authors|length>4 %}
+                    <div class="container mt-4">
+                        <h2>Author Matches</h2>
+                        <div class="container-fluid mt-3">
+                            <div class="row flex-row flex-nowrap">
+                                {% for book in authors %}
+                                    <div class="container">
+                                        <div class="card special-card mx-1" style="width: 16rem">
+                                            <a href="{{ url_for('main.book_info', bookid=book.bookid) }}" class="text-decoration-none text-muted">
+                                            <img
+                                                class="card-img-top mx-auto"
+                                                src="{{ url_for('static', filename='book/pictures/' + book.picture) }}"
+                                                alt="Card image cap"
+                                                style="width: 100%; height: 24vh"
+                                            />
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ book.title }}</h5>
+                                                <h6 class="card-title">{{ book.author }}</h6>
+                                                <p class="card-text text-wrap">{{ book.description }}</p>
+                                            </div></a>
+                                            <div class="container mt-1 mb-3 text-center">
+                                                <a
+                                                    href="{{ url_for('user.book_request', bookid=book.bookid) }}"
+                                                    class="btn btn-success"
+                                                    ><i class="bi bi-send mr-1"></i>Request</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="container mt-4">
+                        <h2>Author Matches</h2>
+                        <div class="row mt-3">
+                            {% for book in authors %}
+                                <div class="col-md-3">
+                                    <div class="card special-card mx-1">
+                                        <a href="{{ url_for('main.book_info', bookid=book.bookid) }}" class="text-decoration-none text-muted">
+                                        <img
+                                            class="card-img-top mx-auto"
+                                            src="{{ url_for('static', filename='book/pictures/' + book.picture) }}"
+                                            alt="Card image cap"
+                                            style="width: 100%; height: 24vh"
+                                        />
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ book.title }}</h5>
+                                            <h6 class="card-title">{{ book.author }}</h6>
+                                            <p class="card-text text-wrap">{{ book.description }}</p>
+                                        </div></a>
+                                        <div class="container mt-1 mb-3 text-center">
+                                            <a
+                                                href="{{ url_for('user.book_request', bookid=book.bookid) }}"
+                                                class="btn btn-success"
+                                                ><i class="bi bi-send mr-1"></i>Request</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% else %}
+            <div class="container mt-4">
+                <h2 class="mx-auto mt-3">No Results Found.</h2>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

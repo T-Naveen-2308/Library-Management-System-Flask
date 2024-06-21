@@ -1,0 +1,120 @@
+body {
+    background: #fafafa;
+    color: #333333;
+    margin-top: 5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #444444;
+}
+
+.bg-steel {
+    background-color: #47958d;
+}
+
+.site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+}
+
+.content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+
+.account-img {
+    height: 15rem;
+    width: 15rem;
+    margin-right: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.nav-img {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.logo-img {
+    height: 55px;
+    width: 55px;
+}
+
+.account-heading {
+    font-size: 2.5rem;
+}
+
+.flex-nowrap {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.account-img {
+    max-width: 100%;
+}
+
+.nav-item.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+.card-img-top {
+    border-bottom: 1px solid #ccc;
+}
+
+.special-card {
+    width: 100%;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-lg {
+    font-size: 1.13rem !important;
+}
+
+.form-check-input[type="radio"] {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.search-form {
+    border: none;
+    margin-top: 5px;
+}
+
+.search-form .input-group {
+    width: 100%;
+}
+
+.search-form .form-control {
+    border-radius: 4px;
+}
+
+.search-form .btn {
+    border-radius: 0 4px 4px 0;
+    background-color: #007bff;
+    color: white;
+}
+
+.search-form .btn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,48 @@
+{% extends "user/layout.html" %} {% block content %}
+<div class="content-section mx-auto w-50">
+    <form
+        method="POST"
+        action=""
+        class="form w-75 mx-auto mt-3 mb-3"
+        style="display: flexbox; justify-content: center; align-items: center"
+    >
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 h2 font-weight-normal">
+                Delete Account
+            </legend>
+            <div class="form-group">
+                {{ form.password.label(class='h5 font-weight-normal
+                form-control-label mt-2') }} {% if form.password.errors %}
+                {{ form.password(class="form-control password form-control-lg
+                is-invalid mt-1") }}
+                <div>
+                    {% for error in form.password.errors %}
+                    <p class="text-danger mt-1">*{{error}}</p>
+                    {% endfor %}
+                </div>
+
+                {% else %} {{ form.password(class="form-control password
+                form-control-lg mt-1") }} {% endif %}
+            </div>
+            <div>
+                <input type="checkbox" id="showPass" onchange="showPassword()">
+                <label for="showPass">Show</label>
+            </div>
+            <p class="text-muted mt-2" style="font-size: 1.15rem;"><a href="{{url_for('user.reset_request', token=2)}}">Forgot Password?</a></p>
+        </fieldset>
+        <div class="row">
+            <div class="col-md-6">
+                <a class="btn btn-success" href="{{url_for("user.account")}}"><i class="bi bi-x-circle mr-1"></i>Cancel</a>
+            </div>
+            <div class="col-md-6 text-right">
+                <button class="btn btn-danger" id="submit" name="submit" type="submit" value="Delete"  onclick="return confirm('Are you sure you want to delete your account?');">
+                    <i class="bi bi-trash"></i>
+                    Delete
+                </button>
+            </div>
+        </div>
+        <div class="container mt-3"></div>
+    </form>
+</div>
+{% endblock content %}

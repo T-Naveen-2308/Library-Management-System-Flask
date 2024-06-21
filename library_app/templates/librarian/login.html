@@ -1,0 +1,56 @@
+{% extends "main/layout.html" %} {% block content %}
+<form
+    method="POST"
+    action=""
+    class="content-section p-5 form w-25 mx-auto"
+    style="display: flexbox; justify-content: center; align-items: center"
+>
+    {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4 h2 font-weight-normal">
+            Librarian Login
+        </legend>
+        <div class="form-group">
+            {{ form.username.label(class='h5 font-weight-normal
+            form-control-label mt-2') }} {% if form.username.errors %} {{
+            form.username(class="form-control form-control-lg is-invalid mt-1")
+            }}
+            <div>
+                {% for error in form.username.errors %}
+                <p class="text-danger mt-1">*{{error}}</p>
+                {% endfor %}
+            </div>
+
+            {% else %} {{ form.username(class="form-control form-control-lg
+            mt-1") }} {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.password.label(class='h5 font-weight-normal
+            form-control-label mt-2') }} {% if form.password.errors %} {{
+            form.password(class="form-control password form-control-lg is-invalid mt-1")
+            }}
+            <div>
+                {% for error in form.password.errors %}
+                <p class="text-danger mt-1">*{{error}}</p>
+                {% endfor %}
+            </div>
+            {% else %} {{ form.password(class="form-control password form-control-lg
+            mt-1") }} {% endif %}
+        </div>
+        <div>
+            <input type="checkbox" id="showPass" onchange="showPassword()">
+            <label for="showPass">Show</label>
+        </div>
+        <div class="form-check mt-2">
+            {{ form.remember(class="form-check-input") }} {{
+            form.remember.label(class="form-check-label") }}
+        </div>
+        <p class="text-muted mt-2"><a href="{{url_for('main.reset_request')}}">Forgot Password?</a></p>
+    </fieldset>
+    <div class="container text-center mt-3">
+        <button class="btn btn-success" id="submit" name="submit" type="submit" value="Login"><i class="bi bi-box-arrow-in-right mr-1"></i>Login</button>
+    </div>
+    <div class="container mt-3"></div>
+    <a href="{{url_for('user.login')}}">Login As User</a>
+</form>
+{% endblock content %}

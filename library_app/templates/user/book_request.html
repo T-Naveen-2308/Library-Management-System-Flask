@@ -1,0 +1,51 @@
+{% extends "user/layout.html" %} {% block content %}
+<div class="content-section mx-auto w-50">
+    <form
+        method="POST"
+        action=""
+        class="form mx-auto w-75 mb-3 mt-3"
+    >
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 h2 font-weight-normal">
+                Request Book
+            </legend>
+            <div class="form-group">
+                {{ form.bookid.label(class='h5 font-weight-normal form-control-label mt-3') }}
+                {% if form.bookid.errors %}
+                {{ form.bookid(class="form-control form-control-lg is-invalid mt-1") }}
+                <div>
+                    {% for error in form.bookid.errors %}
+                    <p class="text-danger mt-1">*{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.bookid(class="form-control form-control-lg mt-1") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.days.label(class='h5 font-weight-normal
+                form-control-label mt-2') }} {% if form.days.errors %} {{
+                form.days(class="form-control form-control-lg is-invalid
+                mt-1") }}
+                <div>
+                    {% for error in form.days.errors %}
+                    <p class="text-danger mt-1">*{{error}}</p>
+                    {% endfor %}
+                </div>
+
+                {% else %} {{ form.days(class="form-control form-control-lg
+                mt-1") }} {% endif %}
+            </div>
+        </fieldset>
+        <div class="row">
+            <div class="col-md-6">
+                <a class="btn btn-lg btn-danger" href="{{url_for("user.books")}}"><i class="bi bi-x-circle mr-1"></i>Cancel</a>
+            </div>
+            <div class="col-md-6 text-right">
+                <button class="btn btn-lg btn-success" id="submit" name="submit" type="submit" value="Edit"><i class="bi bi-send mr-1"></i>Request</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}
