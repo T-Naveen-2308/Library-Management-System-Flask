@@ -74,8 +74,8 @@ A comprehensive Library Management System built using Flask, a lightweight WSGI 
 
 ## Project Structure
 
-Library-Management-System-Flask/
-│
+Library-Management-System-Flask/  
+│  
 ├── instance/
 │ ├── database.sqlite3
 │
