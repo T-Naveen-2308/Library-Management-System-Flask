@@ -86,21 +86,21 @@ Library-Management-System-Flask/
 │ ├── models.py  
 │ ├── utils.py  
 │ ├── errors/  
-│ │ ├── init.py  
+│ │ ├── \_\_init\_\_.py  
 │ │ ├── handlers.py  
 │ │ ├── utils.py  
 │ ├── librarian/  
-│ │ ├── init.py  
+│ │ ├── \_\_init\_\_.py  
 │ │ ├── forms.py  
 │ │ ├── routes.py  
 │ │ ├── utils.py  
 │ ├── main/  
-│ │ ├── init.py  
+│ │ ├── \_\_init\_\_.py  
 │ │ ├── forms.py  
 │ │ ├── routes.py  
 │ │ ├── utils.py  
 │ ├── user/  
-│ │ ├── init.py  
+│ │ ├── \_\_init\_\_.py  
 │ │ ├── forms.py  
 │ │ ├── routes.py  
 │ │ ├── utils.py  
