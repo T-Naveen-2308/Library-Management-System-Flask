@@ -80,7 +80,7 @@ Library-Management-System-Flask/
 │ ├── database.sqlite3  
 │  
 ├── library_app/  
-│ ├── init.py  
+│ ├── __init__.py  
 │ ├── config.py  
 │ ├── forms.py  
 │ ├── models.py  
