@@ -65,7 +65,7 @@ A comprehensive Library Management System built using Flask, a lightweight WSGI 
     Open your web browser and go to `http://127.0.0.1:5000`
 
 ## Project Structure
-
+```
 Library-Management-System-Flask/  
 │  
 ├── instance/  
@@ -110,7 +110,7 @@ Library-Management-System-Flask/
 ├── requirements.txt  
 ├── run.py  
 ├── README.md  
-
+```
 ## Usage
 
 1. **Register a new user** or log in with existing credentials.
