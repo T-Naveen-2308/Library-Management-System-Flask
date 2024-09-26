@@ -72,27 +72,27 @@ Library-Management-System-Flask/
 │ ├── database.sqlite3  
 │  
 ├── library_app/  
-│ ├── \_\_init\_\_.py  
+│ ├── __init__.py  
 │ ├── config.py  
 │ ├── forms.py  
 │ ├── models.py  
 │ ├── utils.py  
 │ ├── errors/  
-│ │ ├── \_\_init\_\_.py  
+│ │ ├── __init__.py  
 │ │ ├── handlers.py  
 │ │ ├── utils.py  
 │ ├── librarian/  
-│ │ ├── \_\_init\_\_.py  
+│ │ ├── __init__.py  
 │ │ ├── forms.py  
 │ │ ├── routes.py  
 │ │ ├── utils.py  
 │ ├── main/  
-│ │ ├── \_\_init\_\_.py  
+│ │ ├── __init__.py  
 │ │ ├── forms.py  
 │ │ ├── routes.py  
 │ │ ├── utils.py  
 │ ├── user/  
-│ │ ├── \_\_init\_\_.py  
+│ │ ├── __init__.py  
 │ │ ├── forms.py  
 │ │ ├── routes.py  
 │ │ ├── utils.py  
